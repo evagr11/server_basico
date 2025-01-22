@@ -2,6 +2,7 @@ const express = require('express');
 
 const app = express();
 
+
 const users =[
     {
         "username": "admin",
@@ -17,11 +18,6 @@ const users =[
     }
 ]
 
-function getUsers(request, response){
-    response.json(users) // Esto se devuelve al cliente
-}
-
-//app.get("/users", getUsers)
 app.get("/", (req, response) => {
     response.send("Hola mundo")
 })
