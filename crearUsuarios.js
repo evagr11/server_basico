@@ -10,7 +10,7 @@ const generateRandomWord = () => {
 const generateRandomUsername = () => {
     const word1 = generateRandomWord();
     const word2 = generateRandomWord();
-    const randomNumber = Math.floor(Math.random() * 10000); 
+    const randomNumber = Math.floor(Math.random() * 1000); 
     return word1 + word2 + randomNumber;
 };
 
@@ -35,7 +35,7 @@ for (let i = 0; i < 500; i++) {
 app.get("/", (req, response) => {
     response.send("Hola mundo")
 })
-app.get("/users", (req, res) =>{
+app.get("/users500", (req, res) =>{
     res.json(users)
 })
 
