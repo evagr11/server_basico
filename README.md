@@ -17,3 +17,16 @@ npm i express # version corta
 Es buena practica y recomendadi, meter `node_modules` en nuestro `.gitignore` para evitar subir todas las dependencias.
 
 Para arrancar el servidor lanzo en la terminal `node server.js`
+
+## Endpoint básico
+
+Este endpoint me devuelve un "Hola mundo" tanto en el servidor como al cliente
+
+```javascript
+function holaMundo(request, response){
+    console.log("Hola mundo") // Esto se ejecuta en el servidor
+    response.send("Hola mundo") // Esto se devuelve al cliente
+}
+
+app.get("/", holaMundo)
+```
