@@ -14,4 +14,4 @@ npm install express
 npm i express # version corta
 ```
 
-Es buena practica y recomendadi, meter `node_modules` en un git 
+Es buena practica y recomendadi, meter `node_modules` en nuestro `.gitignore` para evitar subir todas las dependencias
