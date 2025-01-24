@@ -32,12 +32,20 @@ for (let i = 0; i < 500; i++) {
     users.push(user);
 }
 
-app.get("/", (req, response) => {
+/*app.get("/", (req, response) => {
     response.send("Hola mundo")
-})
-app.get("/users500", (req, res) =>{
+})*/
+
+app.use(express.static("public"))
+app.get("/users", (req, res) =>{
     res.json(users)
-})
+});
+
+app.get("/users/:id", (req, res) =>{
+    const id = req.params.id;
+    console.log(id)
+    res.json(users[id]);
+});
 
 app.listen(3000, () => {
     console.log("El servidor está funcionando en el puerto 3000");

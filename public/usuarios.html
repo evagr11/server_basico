@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios</title>
+</head>
+<body>
+    Aqui se veran los Usuarios
+    <script>
+        fetch("/users")
+        .then(data => data.json())
+        .then(usuarios => {
+            console.log(usuarios)
+            //NOMBRE DE USUARIO
+            const USERNAME = document.createElement("h3");
+            USERNAME.innerText = "USERNAME";
+            const username = data.username
+            const usernameText = document.createElement("p")
+            usernameText.innerText = username
+            document.body.appendChild(usernameText)
+
+            //NOMBRE DE CONTRASEÑA
+            const PASSWORD = document.createElement("h3");
+            PASSWORD.innerText = "PASSWORD";
+            const password = data.password
+            const passwordText = document.createElement("p")
+            passwordText.innerText = password
+            document.body.appendChild(passwordText)
+
+
+        })
+    </script>
+</body>
+</html>
