@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usuarios</title>
+    <title>Canciones</title>
     <style>
        table {
             width: 100%;
@@ -15,24 +15,23 @@
             padding: 8px;
             text-align: center;
         }
-        
     </style>
 </head>
 <body>
-    <h1>Aquí se verán los Usuarios</h1>
+    <h1>Aquí se verán las canciones</h1>
     <script>
-        fetch("/users")
+        fetch("/songs")
         .then(data => data.json())
-        .then(usuarios => {
-            console.log(usuarios);
+        .then(canciones => {
+            console.log(canciones);
 
-            function createTable(usuarios) {
+            function createTable(canciones) {
                 const table = document.createElement("table");
                 const thead = document.createElement("thead");
                 const trHead = document.createElement("tr");
 
                 // Obtener claves (nombres de columnas) desde el primer objeto
-                const claves = Object.keys(usuarios[0]);
+                const claves = Object.keys(canciones[0]);
 
                 // Crear encabezados de tabla
                 for (let i = 0; i < claves.length; i++) {
@@ -47,21 +46,25 @@
                 // Crear cuerpo de la tabla
                 const tbody = document.createElement("tbody");
 
-                for (let i = 0; i < usuarios.length; i++) {
+                for (let i = 0; i < canciones.length; i++) {
                     const tr = document.createElement("tr");
 
-                    // Asignar color según el 'status'
-                    if (usuarios[i].status === "active") {
+                    // Asignar color según el 'genero'
+                    if (canciones[i].genre === "Pop") {
+                        tr.style.backgroundColor = "lightblue";
+                    } else if (canciones[i].genre === "Rock") {
+                        tr.style.backgroundColor = "violet";
+                    } else if (canciones[i].genre === "Reggaeton") {
+                        tr.style.backgroundColor = "lightyellow";
+                    } else if (canciones[i].genre === "Jazz") {
+                        tr.style.backgroundColor = "pink";
+                    } else if (canciones[i].genre === "Electrónica") {
                         tr.style.backgroundColor = "lightgreen";
-                    } else if (usuarios[i].status === "inactive") {
-                        tr.style.backgroundColor = "lightcoral";
-                    } else if (usuarios[i].status === "pending") {
-                        tr.style.backgroundColor = "lightgrey";
                     }
 
                     for (let j = 0; j < claves.length; j++) {
                         const td = document.createElement("td");
-                        td.innerText = usuarios[i][claves[j]];
+                        td.innerText = canciones[i][claves[j]];
                         tr.appendChild(td);
                     }
 
@@ -73,7 +76,7 @@
             }
 
             // Llamar a la función para generar la tabla
-            createTable(usuarios);
+            createTable(canciones);
 
         });
     </script>
